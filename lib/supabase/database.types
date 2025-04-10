@@ -1,0 +1,207 @@
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      announcements: {
+        Row: {
+          id: number
+          title: string
+          content: string
+          author_id: string | null
+          published_at: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          title: string
+          content: string
+          author_id?: string | null
+          published_at?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          title?: string
+          content?: string
+          author_id?: string | null
+          published_at?: string
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      classes: {
+        Row: {
+          id: number
+          name: string
+          description: string | null
+          academic_year: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          name: string
+          description?: string | null
+          academic_year: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          name?: string
+          description?: string | null
+          academic_year?: string
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      class_subjects: {
+        Row: {
+          id: number
+          class_id: number
+          subject_id: number
+          teacher_id: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          class_id: number
+          subject_id: number
+          teacher_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          class_id?: number
+          subject_id?: number
+          teacher_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      profiles: {
+        Row: {
+          id: string
+          email: string
+          first_name: string | null
+          last_name: string | null
+          role_id: number | null
+          phone: string | null
+          address: string | null
+          date_of_birth: string | null
+          profile_image_url: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id: string
+          email: string
+          first_name?: string | null
+          last_name?: string | null
+          role_id?: number | null
+          phone?: string | null
+          address?: string | null
+          date_of_birth?: string | null
+          profile_image_url?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          email?: string
+          first_name?: string | null
+          last_name?: string | null
+          role_id?: number | null
+          phone?: string | null
+          address?: string | null
+          date_of_birth?: string | null
+          profile_image_url?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      roles: {
+        Row: {
+          id: number
+          name: string
+        }
+        Insert: {
+          id?: number
+          name: string
+        }
+        Update: {
+          id?: number
+          name?: string
+        }
+      }
+      student_classes: {
+        Row: {
+          id: number
+          student_id: string
+          class_id: number
+          enrollment_date: string
+          status: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          student_id: string
+          class_id: number
+          enrollment_date?: string
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          student_id?: string
+          class_id?: number
+          enrollment_date?: string
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      subjects: {
+        Row: {
+          id: number
+          name: string
+          description: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: number
+          name: string
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: number
+          name?: string
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+  }
+}
+
+export type Tables<T extends keyof Database["public"]["Tables"]> = Database["public"]["Tables"][T]["Row"]
